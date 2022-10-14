@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b8c74b6-6ff8-4544-8d41-3b5c8f6916de" name="Changes" comment="priceindex.py">
+    <list default="true" id="1b8c74b6-6ff8-4544-8d41-3b5c8f6916de" name="Changes" comment="crawling.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +111,8 @@
       <updated>1665626333049</updated>
       <workItem from="1665626340082" duration="2011000" />
       <workItem from="1665705987670" duration="909000" />
-      <workItem from="1665707038651" duration="1989000" />
+      <workItem from="1665707038651" duration="3344000" />
+      <workItem from="1665726992397" duration="167000" />
     </task>
     <task id="LOCAL-00001" summary="priceindex.py">
       <created>1665631911862</created>
@@ -134,7 +135,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665632120376</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="crawling.py">
+      <created>1665721275316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665721275316</updated>
+    </task>
+    <task id="LOCAL-00005" summary="crawling.py">
+      <created>1665721289614</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665721289614</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +174,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="priceindex.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="priceindex.py" />
+    <MESSAGE value="crawling.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="crawling.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -172,22 +188,22 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../논문/crawling.py</url>
           <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../논문/crawling.py</url>
-          <line>35</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../논문/crawling.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="4" />
+          <line>53</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../논문/crawling.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="5" />
+          <line>54</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../논문/crawling.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
