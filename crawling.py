@@ -115,9 +115,6 @@ for a in apartment :
                 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="sub2"]'))
 
                 break
-                #파일저장을 저기다 놓으니, 매 단지마다 저장이 되네요. 즉, 평형하나 다모으면 저장
-                #다음평형 모으면 덮어쓰기저장, 이런식이다.
-                #첫단지의 경우에는 다끝나고 DF를 저장하면되지만 그 다음단지작업이 끝나면 DF를 저장하면 누적저장이되어버린다. 이걸어쩌지
 
             # 홈으로 돌아가는 코드. 맨 마지막에 삽입
     driver.switch_to.default_content()
