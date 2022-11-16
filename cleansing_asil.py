@@ -67,9 +67,11 @@ apartment = apartment.dropna()
 apartment= apartment.astype({'타입':'int', '체결가격(억)':'int',
                              '체결가격(천만)':'int', '거래동':'int','거래층':'int'})
 apartment['거래가격'] = apartment['체결가격(억)']*10000+apartment['체결가격(천만)']
+apartment['평당거래가'] = round(apartment['거래가격'] / (apartment['타입']/3.3))
+
 #쓸모없어진 컬럼 삭제
 apartment = apartment.drop(columns=['체결가격','거래 동층','체결가격(억,원)'
                                    ,'체결가격(억)','체결가격(천만)'])
 
 
-apartment
+print(apartment)
