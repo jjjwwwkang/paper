@@ -2,6 +2,8 @@ import pandas as pd
 import os
 #경로확인
 os.chdir('D:\데이터사이언스대학원\논문\데이터\논문용')
+#이 부분을 나중에 있는 csv전부다 읽어오는걸로 고쳐야할듯
+
 한강현대_0 = pd.read_csv('한강현대_0.csv', encoding='utf-8')
 한강현대_1 =pd.read_csv('한강현대_1.csv', encoding='utf-8')
 한강현대_2 =pd.read_csv('한강현대_2.csv', encoding='utf-8')
