@@ -26,7 +26,7 @@ price_change = pd.DataFrame()
 #price_change = 매매지수 변화율 계산 및 담음
 price_change['시점'] = price['시점구']
 for i in price_list[1:] :
-    price_change[i+'변화율'] = round(price[i].pct_change()*100,2)
+    price_change[i] = round(price[i].pct_change()*100,2)
 print(price_change)
 
 #소비자심리지수
