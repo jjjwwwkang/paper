@@ -22,7 +22,13 @@ driver.get(url = 'http://asil.kr/asil/index.jsp')
 time.sleep(5)
 
 #아파트 목록
-apartment = ["명수대현대",'목동한신청구','한강현대']
+apartment = ['마포한강아이파크', '현대3단지', '현대프라임', '한강극동', '현대강변',
+ '금호삼성래미안', '시범', '신반포2차', '이촌시범', '장미', '신동아', '서울숲푸르지오', '화랑', '서울숲푸르지오2차',
+ '삼부', '래미안당산1차', '리센츠', '강변래미안', '잠실엘스', '선사현대', '이촌동삼성리버스위트', '씨티극동',
+ '동아한가람', '한강타운', '가양성지2단지', '산호', 'LG한강자이', '강변힐스테이트', '장미2차', '한강현대',
+ '파크리오', '이촌한강맨션', '힐스테이트서울숲리버', '한강쌍용', '강변그대가리버뷰', '동신대아', '가양6단지',
+ '유원강변', '장미1차', '옥수하이츠', '한강밤섬자이']
+#["명수대현대",'목동한신청구','한강현대']'명수대현대', '염창동동아3차',
 
 DF = pd.DataFrame()
 
@@ -103,10 +109,17 @@ for a in apartment :
                 data = []
                 for tr in tbody.find_elements(By.TAG_NAME, "tr"):
                     innerdata = []
-                    for td in tr.find_elements(By.TAG_NAME, "td"):
-                        innerdata.append(td.get_attribute("innerText"))
-                    data.append(innerdata)
-                df = pd.DataFrame(data, columns=dataindex)
+                    # 실거래내역이 있는 경우에만 진행
+                    #if tr.find_elements(By.TAG_NAME, "td")[0].text != '실거래 내역이 없습니다.':
+                    try :
+
+                        for td in tr.find_elements(By.TAG_NAME, "td"):
+                            innerdata.append(td.get_attribute("innerText"))
+                        data.append(innerdata)
+                    except:
+                        break
+                df = pd.DataFrame(data)
+                #df = pd.DataFrame(data, columns=dataindex)
                 df['단지명'] = a
                 df.to_csv("D:\\데이터사이언스대학원\\논문\\데이터\\논문용\\{}_{}.csv".format(a,p))
                 DF = pd.concat([DF, df])
