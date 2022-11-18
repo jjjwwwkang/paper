@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from selenium.webdriver import ActionChains
 import html5lib
 
 
@@ -22,13 +23,15 @@ driver.get(url = 'http://asil.kr/asil/index.jsp')
 time.sleep(5)
 
 #아파트 목록
-apartment = ['마포한강아이파크', '현대3단지', '현대프라임', '한강극동', '현대강변',
- '금호삼성래미안', '시범', '신반포2차', '이촌시범', '장미', '신동아', '서울숲푸르지오', '화랑', '서울숲푸르지오2차',
- '삼부', '래미안당산1차', '리센츠', '강변래미안', '잠실엘스', '선사현대', '이촌동삼성리버스위트', '씨티극동',
+
+apartment = [  '이촌동삼성리버스위트', '씨티극동',
  '동아한가람', '한강타운', '가양성지2단지', '산호', 'LG한강자이', '강변힐스테이트', '장미2차', '한강현대',
- '파크리오', '이촌한강맨션', '힐스테이트서울숲리버', '한강쌍용', '강변그대가리버뷰', '동신대아', '가양6단지',
+ ' 파크리오', '이촌한강맨션', '힐스테이트서울숲리버', '한강쌍용', '강변그대가리버뷰', '동신대아', '가양6단지',
  '유원강변', '장미1차', '옥수하이츠', '한강밤섬자이']
-#["명수대현대",'목동한신청구','한강현대']'명수대현대', '염창동동아3차',
+
+#["명수대현대",'목동한신청구','한강현대']'명수대현대', '염창동동아3차','마포한강아이파크', '현대3단지', '현대프라임', '한강극동', '현대강변',
+ #'금호삼성래미안', '시범','신반포2차', '이촌시범', '장미', '신동아', '서울숲푸르지오1차', '화랑', '서울숲푸르지오2차',
+ #'삼부', '래미안당산1차', '리센츠', '강변래미안', '잠실엘스','선사현대',
 
 DF = pd.DataFrame()
 
@@ -56,20 +59,32 @@ for a in apartment :
     py = driver.find_element(By.ID, 'mCSB_1_container')
     pylists = py.find_elements(By.TAG_NAME, 'li')
     # 전세 체크해제
-    driver.find_element(By.XPATH, '//*[@id="deal2"]').click()
+    driver.find_element(By.XPATH, '//*[@id="deal2"]').send_keys(Keys.ENTER)
     time.sleep(0.3)
     # 월세 체크해제
-    driver.find_element(By.XPATH, '//*[@id="deal3"]').click()
+    driver.find_element(By.XPATH, '//*[@id="deal3"]').send_keys(Keys.ENTER)
     time.sleep(0.3)
 
     #평형 갯수에따라
+    #만약 평형 종류가 6개 이상이라면 중간을 클릭하고 맨 왼쪽으로 이동
     if len(pylists) >= 6:
-        k = 2
-    else:
-        k = 0
-    for p in range(k, len(pylists)):
+        ActionChains(driver).click(pylists[len(pylists) // 2]).perform()
+        for i in range(30):
+            ActionChains(driver).send_keys(Keys.ARROW_LEFT).send_keys(Keys.ARROW_LEFT).send_keys(
+                Keys.ARROW_LEFT).send_keys(Keys.ARROW_LEFT).perform()
+            time.sleep(0.2)
+
+    for p in range(len(pylists)):
         pylists[p].click()
         time.sleep(0.5)
+
+        #평형 전체 중 중간에 도달했다면, 오른쪽으로 스크롤 이동
+        if p == len(pylists)//2 :
+            for t in range(30):
+                ActionChains(driver).send_keys(Keys.ARROW_RIGHT).send_keys(Keys.ARROW_RIGHT).send_keys(
+                    Keys.ARROW_RIGHT).send_keys(Keys.ARROW_RIGHT).perform()
+                time.sleep(0.3)
+
         dd = driver.find_elements(By.CSS_SELECTOR, 'iframe')
         for i in dd:
             print(i.get_attribute('id'))
@@ -132,3 +147,5 @@ for a in apartment :
             # 홈으로 돌아가는 코드. 맨 마지막에 삽입
     driver.switch_to.default_content()
     driver.find_element(By.XPATH, '//*[@id="header"]/h1/a').click()
+
+#컬럼명  : ['계약', '일', '경과', '체결가격', '타입', '거래 동층']
