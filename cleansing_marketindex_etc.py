@@ -78,3 +78,4 @@ for i in mk2[2:]:
 market_index=market_index.drop(columns=mk2[1:])
 
 print(market_index)
+market_index.to_csv('bull_bear_market_index.csv', encoding='cp949', index=False)
