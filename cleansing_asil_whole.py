@@ -125,3 +125,4 @@ ASIL = ASIL.drop(columns=['체결가격','거래 동층','체결가격(억,원)'
 
 print(ASIL.shape)
 print(ASIL)
+ASIL.to_csv('ASIL_final.csv',encoding='utf-8-sig')
