@@ -129,5 +129,32 @@ aptfloor = pd.merge(floordata1, aptdata1, how = 'left',left_on = '고유번호',
 final_aptfloor = aptfloor[['주소','단지명_공시가', '단지명_건축물대장', '단지명_도로명주소', '동수', '세대수',
                            '동명_공시가', '동명_건축물대장', '동명_도로명주소', '지상층수',
                            '고유번호','사용승인일']]
+#일단 층정보 다 모은것 출력
 final_aptfloor.to_csv('D:\데이터사이언스대학원\논문\데이터\논문용\\final_aptfloor.csv')
 
+print(final_aptfloor)
+
+'''
+API로 불러온것을 한번에 다 정제하려했는데 이유를 알수없이 멈춘다. 
+'''
+#쓸모없는 컬럼명 삭제
+final_aptfloor = final_aptfloor.drop(columns=['단지명_건축물대장','단지명_도로명주소','동명_건축물대장','동명_도로명주소','고유번호'])
+#서울의아파트만 남기기
+floor_seoul = final_aptfloor[final_aptfloor['주소'].str.contains("서울특별시", na= False)]
+
+#아실과 맞춰서 컬럼명 변경
+#9개밖에안바꾸네. 의외네.
+floor_seoul.replace({'단지명_공시가' : {'가양2단지(성지)' : '가양성지2단지',
+                         '동아한가람1':'동아한가람',
+                        '신반포2':'신반포2차',
+                        '씨티극동1':'씨티극동',
+                        '동아3':'염창동동아3차',
+                        '한강맨숀':'이촌한강맨션',
+                        '장미1':'장미1차',
+                        '장미2':'장미2차',
+                        '현대3':'현대3단지'}}, inplace= True)
+
+
+print(floor_seoul)
+#서울아파트 데이터 csv로 저장
+floor_seoul.to_csv("D:\데이터사이언스대학원\논문\데이터\논문용\\floor_seoul.csv",encoding='utf-8')
