@@ -158,3 +158,4 @@ floor_seoul.replace({'단지명_공시가' : {'가양2단지(성지)' : '가양�
 print(floor_seoul)
 #서울아파트 데이터 csv로 저장
 floor_seoul.to_csv("D:\데이터사이언스대학원\논문\데이터\논문용\\floor_seoul.csv",encoding='utf-8')
+#정상작동확인
